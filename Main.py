@@ -7,18 +7,27 @@ ventana.geometry("800x600")
 
 #paciente
 etiqueta_nombre = tk.Label(ventana, text="Nombre del paciente")
-etiqueta_nombre.pack(pady=5)
-nombre_paciente = tk.Entry(ventana)
-nombre_paciente.pack(pady=5)
+etiqueta_nombre.grid(row=0, column=0, padx=5, pady=5, sticky="e")
 
+nombre_paciente = tk.Entry(ventana, width=30)
+nombre_paciente.grid(row=0, column=1, padx=5, pady=5, sticky="w")
+
+#especialidad
 etiqueta_especialidad = tk.Label(ventana, text="Especialidad")
-etiqueta_especialidad.pack(pady=5)
-lista_especialidad = tk.Listbox(ventana, height=4)
-lista_especialidad.pack(pady=5)
-lista_especialidad.insert(1, "Medicina General")
-lista_especialidad.insert(2, "Pediatría")
-lista_especialidad.insert(3, "Ginecología")
-lista_especialidad.insert(4, "Dermatología")
+etiqueta_especialidad.grid(row=1, column=0, padx=5, pady=5, sticky="e")
+
+especilidad_seleccionada = tk.StringVar(ventana)
+especilidad_seleccionada.set("Seleccione una especialidad")
+
+opciones_especialidad = [
+    "Medicina General",
+    "Pediatría",
+    "Ginecología",
+    "Dermatología"
+]
+
+menu_especialidad = tk.OptionMenu(ventana, especilidad_seleccionada, *opciones_especialidad)
+menu_especialidad.grid(row=1, column=1, padx=5, pady=5, sticky="w")
 
 
 
