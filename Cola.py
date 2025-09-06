@@ -20,3 +20,5 @@ class Cola:
     
     def longitud(self):
         return len(self.elementos)
+    
+    
