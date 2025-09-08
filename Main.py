@@ -1,4 +1,10 @@
+from Cola import Cola
+from Paciente import Paciente
 import tkinter as tk
+from tkinter import ttk
+
+#cola de pacientes
+cola_pacientes = Cola()
 
 #Ventana principal
 ventana = tk.Tk()
@@ -34,6 +40,53 @@ opciones_especialidad = [
 
 menu_especialidad = tk.OptionMenu(ventana, especilidad_seleccionada, *opciones_especialidad)
 menu_especialidad.grid(row=2, column=1, padx=5, pady=5, sticky="w")
+
+#Boton para agregar un paciente a la cola
+def agregar_paciente():
+    nombre = nombre_paciente.get().strip()
+    edad = edad_paciente.get().strip()
+    especialidad = especilidad_seleccionada.get()
+
+    paciente = Paciente(nombre, int(edad), especialidad)
+    cola_pacientes.encolar(paciente)
+
+    actualizar_tabla()
+
+    nombre_paciente.delete(0, tk.END)
+    edad_paciente.delete(0, tk.END)
+    especilidad_seleccionada.set("Seleccione una especialidad")
+
+def actualizar_tabla():
+    for item in tabla_pacientes.get_children():
+        tabla_pacientes.delete(item)
+
+    for i, paciente in enumerate(cola_pacientes.obtener_todos(), 1):
+        tabla_pacientes.insert("", "end", values=(
+            i,
+            paciente.nombre,
+            paciente.edad,
+            paciente.especialidad,
+        ))
+
+boton_agregar = tk.Button(ventana, text="Crear turno", command= agregar_paciente)
+boton_agregar.grid(row=2, column=4, padx=5, pady=5)
+
+#Tabla de pacientes en cola
+tabla_pacientes = ttk.Treeview(ventana, columns=("Nombre", "Edad", "Especialidad", "Tiempo en cola"))
+tabla_pacientes.grid(row=3, column=0, sticky="nsew", padx=10, pady=10)
+
+#Columnas de la tabla
+tabla_pacientes.heading("Nombre", text="Nombre")
+tabla_pacientes.heading("Edad", text="Edad")
+tabla_pacientes.heading("Especialidad", text="Especialidad")
+tabla_pacientes.heading("Tiempo en cola", text="Tiempo")
+
+tabla_pacientes.column("Nombre", width=150, anchor="w")
+tabla_pacientes.column("Edad", width=50, anchor="center")
+tabla_pacientes.column("Especialidad", width=150, anchor="w")
+tabla_pacientes.column("Tiempo en cola", width=50, anchor="center")
+
+#Cola de pacientes
 
 
 

@@ -21,4 +21,7 @@ class Cola:
     def longitud(self):
         return len(self.elementos)
     
+    def obtener_todos(self):
+        return self.elementos.copy()
+    
     
