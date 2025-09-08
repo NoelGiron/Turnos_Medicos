@@ -2,7 +2,6 @@ from Cola import Cola
 from Paciente import Paciente
 import tkinter as tk
 from tkinter import ttk
-import time
 
 #cola de pacientes
 cola_pacientes = Cola()
@@ -18,7 +17,7 @@ tiempos_especialidad = {
 #Ventana principal
 ventana = tk.Tk()
 ventana.title("Ventana de prueba")
-ventana.geometry("800x600")
+ventana.geometry("900x500")
 
 # Configurar grid para que sea responsive
 ventana.grid_rowconfigure(3, weight=1)
@@ -31,8 +30,8 @@ ventana.grid_columnconfigure(3, weight=1)
 etiqueta_nombre = tk.Label(ventana, text="Nombre del paciente")
 etiqueta_nombre.grid(row=0, column=0, padx=5, pady=5, sticky="w")
 
-nombre_paciente = tk.Entry(ventana, width=30)
-nombre_paciente.grid(row=0, column=1, padx=5, pady=5, sticky="nsew")
+nombre_paciente = tk.Entry(ventana, width=40)
+nombre_paciente.grid(row=0, column=1, padx=5, pady=5, sticky="w")
 
 etiqueta_edad = tk.Label(ventana, text="Edad del paciente")
 etiqueta_edad.grid(row=1, column=0, padx=5, pady=5, sticky="w")
@@ -89,7 +88,7 @@ def actualizar_tabla():
 
 #boton para crear turno en cola
 boton_agregar = tk.Button(ventana, text="Crear turno", command= agregar_paciente)
-boton_agregar.grid(row=3, column=0, padx=5, pady=5)
+boton_agregar.grid(row=3, column=0, padx=5, pady=5, sticky="n")
 
 #Tabla de pacientes en cola
 tabla_pacientes = ttk.Treeview(ventana, columns=("#", "Nombre", "Edad", "Especialidad", "Tiempo en cola"), show="headings")
@@ -103,7 +102,7 @@ tabla_pacientes.heading("Especialidad", text="Especialidad")
 tabla_pacientes.heading("Tiempo en cola", text="Tiempo")
 
 tabla_pacientes.column("#", width=40, anchor="center")
-tabla_pacientes.column("Nombre", width=150, anchor="w")
+tabla_pacientes.column("Nombre", width=150, anchor="center")
 tabla_pacientes.column("Edad", width=50, anchor="center")
 tabla_pacientes.column("Especialidad", width=150, anchor="center")
 tabla_pacientes.column("Tiempo en cola", width=100, anchor="center")
