@@ -72,7 +72,6 @@ def agregar_paciente():
     edad_paciente.delete(0, tk.END)
     especilidad_seleccionada.set("Seleccione una especialidad")
 
-
 def actualizar_tabla():
     for item in tabla_pacientes.get_children():
         tabla_pacientes.delete(item)
@@ -86,12 +85,17 @@ def actualizar_tabla():
             f"{paciente.tiempo_consulta} min"
         ))
 
+#Funcion para quitar al primer paciente de la cola
+def atender_paciente():
+    cola_pacientes.desencolar()
+    actualizar_tabla()
+
 #boton para crear turno en cola
 boton_agregar = tk.Button(ventana, text="Crear turno", command= agregar_paciente)
 boton_agregar.grid(row=3, column=0, padx=5, pady=5, sticky="nw")
 
 #boton para atender al paciente
-boton_atender = tk.Button(ventana, text="Atender")
+boton_atender = tk.Button(ventana, text="Atender", command= atender_paciente)
 boton_atender.grid(row=3, column=0, padx=5, pady=5, sticky="ne")
 
 #Tabla de pacientes en cola
