@@ -88,7 +88,11 @@ def actualizar_tabla():
 
 #boton para crear turno en cola
 boton_agregar = tk.Button(ventana, text="Crear turno", command= agregar_paciente)
-boton_agregar.grid(row=3, column=0, padx=5, pady=5, sticky="n")
+boton_agregar.grid(row=3, column=0, padx=5, pady=5, sticky="nw")
+
+#boton para atender al paciente
+boton_atender = tk.Button(ventana, text="Atender")
+boton_atender.grid(row=3, column=0, padx=5, pady=5, sticky="ne")
 
 #Tabla de pacientes en cola
 tabla_pacientes = ttk.Treeview(ventana, columns=("#", "Nombre", "Edad", "Especialidad", "Tiempo en cola"), show="headings")
@@ -106,6 +110,12 @@ tabla_pacientes.column("Nombre", width=150, anchor="center")
 tabla_pacientes.column("Edad", width=50, anchor="center")
 tabla_pacientes.column("Especialidad", width=150, anchor="center")
 tabla_pacientes.column("Tiempo en cola", width=100, anchor="center")
+
+#Marcador de tiempo total de espera en cola
+etiqueta_tiempo = tk.Label(ventana, text="Tiempo en cola:")
+etiqueta_tiempo.grid(row=0, column=2, padx=5, pady=5, sticky="w")
+
+
 
 
 if __name__=="__main__":
