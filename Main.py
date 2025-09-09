@@ -67,6 +67,7 @@ def agregar_paciente():
     cola_pacientes.encolar(paciente)
 
     actualizar_tabla()
+    actualizar_tiempo()
 
     nombre_paciente.delete(0, tk.END)
     edad_paciente.delete(0, tk.END)
@@ -89,6 +90,19 @@ def actualizar_tabla():
 def atender_paciente():
     cola_pacientes.desencolar()
     actualizar_tabla()
+    actualizar_tiempo()
+
+#Funcion para calcular el tiempo de espera en cola
+def tiempo_espera():
+    tiempo_total = 0
+    for paciente in cola_pacientes.obtener_todos():
+        tiempo_total += paciente.tiempo_consulta
+    return tiempo_total
+
+def actualizar_tiempo():
+    tiempo_total = tiempo_espera()
+    tiempo_en_cola.config(text= f"{tiempo_total} min")
+
 
 #boton para crear turno en cola
 boton_agregar = tk.Button(ventana, text="Crear turno", command= agregar_paciente)
@@ -119,8 +133,8 @@ tabla_pacientes.column("Tiempo en cola", width=100, anchor="center")
 etiqueta_tiempo = tk.Label(ventana, text="Tiempo en cola:")
 etiqueta_tiempo.grid(row=0, column=2, padx=5, pady=5, sticky="w")
 
-
-
+tiempo_en_cola = tk.Label(ventana, text= "0 min")
+tiempo_en_cola.grid(row= 1, column=2, padx=5, pady=5, sticky="w")
 
 if __name__=="__main__":
     ventana.mainloop()
