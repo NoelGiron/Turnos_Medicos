@@ -4,3 +4,6 @@ class Paciente:
         self.edad = edad
         self.especialidad = especialidad
         self.tiempo_consulta = tiempo_consulta
+
+    def __str__(self):
+        return f'{self.nombre}, {self.edad}, {self.especialidad}'

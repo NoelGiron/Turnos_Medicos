@@ -1,0 +1,15 @@
+digraph "lista de pacientes" {
+	rankdir=LB
+	tabla [label=<<TABLE BORDER="1" CELLBORDER="1" CELLSPACING="0">
+        <TR>
+            <TD BGCOLOR="#4CAF50"><B>Nombre</B></TD>
+            <TD BGCOLOR="#4CAF50"><B>Edad</B></TD>
+            <TD BGCOLOR="#4CAF50"><B>Especialidad</B></TD>
+        </TR>
+            <TR>
+                <TD>Mynor Cifuentes</TD>
+                <TD>30 años</TD>
+                <TD>Dermatología</TD>
+            </TR>
+            </TABLE>> shape=none]
+}

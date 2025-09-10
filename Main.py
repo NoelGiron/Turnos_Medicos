@@ -136,5 +136,9 @@ etiqueta_tiempo.grid(row=0, column=2, padx=5, pady=5, sticky="w")
 tiempo_en_cola = tk.Label(ventana, text= "0 min")
 tiempo_en_cola.grid(row= 1, column=2, padx=5, pady=5, sticky="w")
 
+#Boton para graficar la cola de pacientes
+graficar_cola = tk.Button(ventana, text="Graficar cola", command=cola_pacientes.graficar_lista)
+graficar_cola.grid(row=3, column=0, padx=5, pady=5, sticky="w")
+
 if __name__=="__main__":
     ventana.mainloop()
