@@ -1,0 +1,19 @@
+
+            graph G{
+                node [shape=plaintext]; 
+                tablero[label=<<TABLE BORDER="1" CELLBORDER="1" CELLSPACING="0">
+                    <TR>
+                        <TD BGCOLOR="#4CAF50"><B>Nombre</B></TD>
+                        <TD BGCOLOR="#4CAF50"><B>Edad</B></TD>
+                        <TD BGCOLOR="#4CAF50"><B>Especialidad</B></TD>
+                    </TR>
+                    
+             <TR>
+                 <TD>Carlos Cifuentes</TD>
+                 <TD>30 años</TD>
+                 <TD>Dermatología</TD>
+             </TR>
+             
+            </TABLE>>];
+            }
+            
